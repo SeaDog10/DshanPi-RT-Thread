@@ -45,3 +45,4 @@ GPUCache/
 tags
 cscope.*
 ncscope.*
+rt-thread/tools/kconfig-frontends/kconfig-mconf
