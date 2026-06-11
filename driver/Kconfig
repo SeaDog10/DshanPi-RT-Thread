@@ -8,7 +8,7 @@ menu "Hardware Drivers Config"
         if BSP_USING_UART
             config RT_USING_UART0
                 bool "Enable UART 0"
-                default n
+                default y
 
             config RT_USING_UART1
                 bool "Enable UART 1"
@@ -16,7 +16,7 @@ menu "Hardware Drivers Config"
 
             config RT_USING_UART2
                 bool "Enable UART 2"
-                default y
+                default n
 
             config RT_USING_UART3
                 bool "Enable UART 3"
@@ -51,7 +51,7 @@ menu "Hardware Drivers Config"
         bool
         default y
 
-        config BSP_USING_GICV3
+        config BSP_USING_GICV2
             bool
             default y
 

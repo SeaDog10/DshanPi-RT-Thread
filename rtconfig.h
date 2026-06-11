@@ -51,7 +51,7 @@
 #define RT_USING_DEVICE_OPS
 #define RT_USING_CONSOLE
 #define RT_CONSOLEBUF_SIZE 128
-#define RT_CONSOLE_DEVICE_NAME "uart2"
+#define RT_CONSOLE_DEVICE_NAME "uart0"
 #define RT_VER_NUM 0x40101
 #define ARCH_CPU_64BIT
 #define ARCH_ARMV8
@@ -106,9 +106,6 @@
 /* Utilities */
 
 
-/* RT-Thread Utestcases */
-
-
 /* RT-Thread online packages */
 
 /* IoT - internet of things */
@@ -120,6 +117,15 @@
 
 
 /* Wiced WiFi */
+
+
+/* CYW43012 WiFi */
+
+
+/* BL808 WiFi */
+
+
+/* CYW43439 WiFi */
 
 
 /* IoT Cloud */
@@ -144,9 +150,6 @@
 /* u8g2: a monochrome graphic library */
 
 
-/* PainterEngine: A cross-platform graphics application framework written in C language */
-
-
 /* tools packages */
 
 
@@ -166,11 +169,57 @@
 
 /* peripheral libraries and drivers */
 
+/* HAL & SDK Drivers */
+
+/* STM32 HAL & SDK Drivers */
+
+
+/* Infineon HAL Packages */
+
 
 /* Kendryte SDK */
 
 
+/* MM32 HAL & SDK Drivers */
+
+
+/* WCH HAL & SDK Drivers */
+
+
+/* AT32 HAL & SDK Drivers */
+
+
+/* HC32 DDL Drivers */
+
+
+/* NXP HAL & SDK Drivers */
+
+
+/* NUVOTON Drivers */
+
+
+/* GD32 Drivers */
+
+
+/* HPMicro SDK */
+
+
+/* FT32 HAL & SDK Drivers */
+
+
+/* NOVOSNS Drivers */
+
+
+/* sensors drivers */
+
+
+/* touch drivers */
+
+
 /* AI packages */
+
+
+/* Signal Processing and Control Algorithm Packages */
 
 
 /* miscellaneous packages */
@@ -183,21 +232,47 @@
 /* entertainment: terminal games and other interesting software packages */
 
 
-/* Privated Packages of RealThread */
+/* Arduino libraries */
 
 
-/* Network Utilities */
+/* Projects and Demos */
 
 
-/* RT-Thread Smart */
+/* Sensors */
 
-#define SOC_RK3568
+
+/* Display */
+
+
+/* Timing */
+
+
+/* Data Processing */
+
+
+/* Data Storage */
+
+/* Communication */
+
+
+/* Device Control */
+
+
+/* Other */
+
+
+/* Signal IO */
+
+
+/* Uncategorized */
+
+#define SOC_RK3576
 
 /* Hardware Drivers Config */
 
 #define BSP_USING_UART
-#define RT_USING_UART2
+#define RT_USING_UART0
 #define BSP_USING_GIC
-#define BSP_USING_GICV3
+#define BSP_USING_GICV2
 
 #endif

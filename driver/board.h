@@ -11,7 +11,7 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
 
-#include <rk3568.h>
+#include <rk3576.h>
 
 extern unsigned char __bss_start;
 extern unsigned char __bss_end;

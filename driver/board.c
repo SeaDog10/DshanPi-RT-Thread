@@ -25,9 +25,9 @@ struct mem_desc platform_mem_desc[] =
 {
     {0x200000, 0x80000000, 0x200000, NORMAL_MEM},
     {UART0_MMIO_BASE, UART0_MMIO_BASE + 0x10000, UART0_MMIO_BASE, DEVICE_MEM},
-    {UART1_MMIO_BASE, UART1_MMIO_BASE + 0x90000, UART1_MMIO_BASE, DEVICE_MEM},
-    {GIC_PL600_DISTRIBUTOR_PPTR, GIC_PL600_DISTRIBUTOR_PPTR + 0x10000, GIC_PL600_DISTRIBUTOR_PPTR, DEVICE_MEM},
-    {GIC_PL600_REDISTRIBUTOR_PPTR, GIC_PL600_REDISTRIBUTOR_PPTR + 0xc0000, GIC_PL600_REDISTRIBUTOR_PPTR, DEVICE_MEM},
+    {UART2_MMIO_BASE, UART2_MMIO_BASE + 0x10000, UART2_MMIO_BASE, DEVICE_MEM},
+    {GIC400_DISTRIBUTOR_PPTR, GIC400_DISTRIBUTOR_PPTR + 0x10000, GIC400_DISTRIBUTOR_PPTR, DEVICE_MEM},
+    {GIC400_CONTROLLER_PPTR, GIC400_CONTROLLER_PPTR + 0x10000, GIC400_CONTROLLER_PPTR, DEVICE_MEM},
 };
 
 const rt_uint32_t platform_mem_desc_size = sizeof(platform_mem_desc) / sizeof(platform_mem_desc[0]);
@@ -84,10 +84,16 @@ MSH_CMD_EXPORT(reboot, reboot...);
 #ifdef RT_USING_SMP
 rt_uint64_t rt_cpu_mpidr_early[] =
 {
-    [0] = 0x81000000,
-    [1] = 0x81000100,
-    [2] = 0x81000200,
-    [3] = 0x81000300,
+    [0] = 0x80000000,   /* A53 CPU0 */
+    [1] = 0x80000100,   /* A53 CPU1 */
+    [2] = 0x80000200,   /* A53 CPU2 */
+    [3] = 0x80000300,   /* A53 CPU3 */
+#if RT_CPUS_NR > 4
+    [4] = 0x80010000,   /* A72 CPU0 */
+    [5] = 0x80010100,   /* A72 CPU1 */
+    [6] = 0x80010200,   /* A72 CPU2 */
+    [7] = 0x80010300,   /* A72 CPU3 */
+#endif
 };
 
 void rt_hw_secondary_cpu_up(void)
@@ -107,7 +113,6 @@ void secondary_cpu_c_start(void)
     rt_hw_spin_lock(&_cpus_lock);
 
     arm_gic_cpu_init(0, platform_get_gic_cpu_base());
-    arm_gic_redist_init(0, platform_get_gic_redist_base());
     rt_hw_vector_init();
     rt_hw_gtimer_local_enable();
     arm_gic_umask(0, IRQ_ARM_IPI_KICK);
