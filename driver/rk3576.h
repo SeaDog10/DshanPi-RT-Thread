@@ -28,8 +28,8 @@
 
 #define UART_MMIO_SIZE  0x100
 
-/* UART IRQ: SPI 108~119, GIC IRQ = 32 + SPI */
-#define UART_IRQ_BASE   (32 + 108)
+/* UART IRQ: GIC INTID 108~119 (TRM Table 1-3) */
+#define UART_IRQ_BASE   108
 #define UART0_IRQ       (UART_IRQ_BASE + 0)
 #define UART1_IRQ       (UART_IRQ_BASE + 1)
 #define UART2_IRQ       (UART_IRQ_BASE + 2)
@@ -52,7 +52,7 @@
 
 #define GPIO_MMIO_SIZE  0x100
 
-#define GPIO_IRQ_BASE   (32 + 120)
+#define GPIO_IRQ_BASE   120
 #define GPIO0_IRQ       (GPIO_IRQ_BASE + 0)
 #define GPIO1_IRQ       (GPIO_IRQ_BASE + 1)
 #define GPIO2_IRQ       (GPIO_IRQ_BASE + 2)
