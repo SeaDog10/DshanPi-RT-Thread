@@ -1,0 +1,47 @@
+# compiled files
+*.pyc
+*.o
+*.obj
+*.a
+*.lib
+*.i
+*.d
+*.dep
+*.dfinish
+
+# target files
+*.elf
+*.bin
+*.hex
+*.axf
+*.map
+
+# build directory
+build/
+
+# scons files
+*.dblite
+.sconsign.dblite
+
+# IDE files
+*.pdb
+*.idb
+*.ilk
+*.old
+*.crf
+*.su
+*.si4project
+Debug/
+.idea/
+.vscode/
+.history/
+.settings/
+
+# others
+*~
+*.bak
+cconfig.h
+GPUCache/
+tags
+cscope.*
+ncscope.*
