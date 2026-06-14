@@ -11,7 +11,6 @@
 #include <rthw.h>
 #include <rtthread.h>
 
-#include <mmu.h>
 #include <psci.h>
 #include <gicv3.h>
 #include <gtimer.h>
@@ -20,6 +19,7 @@
 
 #include <board.h>
 #include <drv_uart.h>
+#include <drv_mmu.h>
 
 struct mem_desc platform_mem_desc[] =
 {
@@ -41,8 +41,7 @@ void idle_wfi(void)
 
 void rt_hw_board_init(void)
 {
-    rt_hw_init_mmu_table(platform_mem_desc, platform_mem_desc_size);
-    rt_hw_mmu_init();
+    drv_mmu_init_table(platform_mem_desc, platform_mem_desc_size);
 
     /* initialize hardware interrupt */
     rt_hw_interrupt_init();

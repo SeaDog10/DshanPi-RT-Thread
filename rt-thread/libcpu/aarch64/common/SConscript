@@ -6,6 +6,8 @@ Import('rtconfig')
 
 cwd     = GetCurrentDir()
 src     = Glob('*.c') + Glob('*.cpp') + Glob('*.S')
+# drv_mmu.c 接管 MMU，排除旧的 mmu.c
+src     = [f for f in src if 'mmu.c' not in str(f)]
 CPPPATH = [cwd]
 
 group = DefineGroup('common', src, depend = [''], CPPPATH = CPPPATH)
