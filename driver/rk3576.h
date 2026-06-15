@@ -11,6 +11,19 @@
 #ifndef __RK3576_H__
 #define __RK3576_H__
 
+#include <rtthread.h>
+
+/* =========================== Unified MMIO Register Access =========================== */
+#define READ_REG_32(addr)               (*(volatile rt_uint32_t *)(uintptr_t)(addr))
+#define WRITE_REG_32(addr, val)         (*(volatile rt_uint32_t *)(uintptr_t)(addr) = (rt_uint32_t)(val))
+
+/* HIWORD_MASK write: upper 16 bits = mask, lower 16 bits = shifted value */
+#define HIWORD_UPDATE_REG(addr, val, mask, shift) \
+    WRITE_REG_32(addr, (((mask) << 16) | ((val) << (shift))))
+
+/* =========================== CRU Base =========================== */
+#define RK3576_CRU_BASE  0x27200000
+
 /* UART */
 #define UART_MMIO_BASE  0x2AD40000
 #define UART0_MMIO_BASE 0x2AD40000

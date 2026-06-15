@@ -274,5 +274,6 @@
 #define RT_USING_UART0
 #define BSP_USING_GIC
 #define BSP_USING_GICV2
+#define BSP_USING_CLK
 
 #endif

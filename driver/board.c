@@ -20,6 +20,7 @@
 #include <board.h>
 #include <drv_uart.h>
 #include <drv_mmu.h>
+#include <drv_clk.h>
 
 struct mem_desc platform_mem_desc[] =
 {
@@ -28,6 +29,8 @@ struct mem_desc platform_mem_desc[] =
     {GIC400_CONTROLLER_PPTR, GIC400_CONTROLLER_PPTR + 0x10000, GIC400_CONTROLLER_PPTR, DEVICE_MEM},
     {UART0_MMIO_BASE, UART0_MMIO_BASE + 0x10000, UART0_MMIO_BASE, DEVICE_MEM},
     {UART2_MMIO_BASE, UART2_MMIO_BASE + 0x10000, UART2_MMIO_BASE, DEVICE_MEM},
+    /* CRU (Clock & Reset Unit) - covers all clock control registers */
+    {0x27200000, 0x27250000, 0x27200000, DEVICE_MEM},
     /* DDR: from 0x40000000 (DDR base per TRM), covers stack (sp at 0x50000000↓), code, heap */
     {0x40000000, 0x58000000, 0x40000000, NORMAL_MEM},
 };

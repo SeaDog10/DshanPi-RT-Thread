@@ -55,4 +55,12 @@ menu "Hardware Drivers Config"
             bool
             default y
 
+    config BSP_USING_CLK
+        bool "Using CLK (Clock Driver)"
+        default y
+        help
+            Enable RK3576 clock driver for inspecting and configuring
+            clock frequencies. Provides MSH commands: clk_list,
+            clk_rate, clk_dump, clk_set, clk_enable, clk_disable.
+
 endmenu

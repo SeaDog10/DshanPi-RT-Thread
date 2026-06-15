@@ -118,12 +118,12 @@ BSP_DEFINE_UART_DEVICE(9);
 
 rt_inline rt_uint32_t dw8250_read32(rt_ubase_t addr, rt_ubase_t offset)
 {
-    return *((volatile rt_uint32_t *)(addr + (offset << UART_REG_SHIFT)));
+    return READ_REG_32(addr + ((offset) << UART_REG_SHIFT));
 }
 
 rt_inline void dw8250_write32(rt_ubase_t addr, rt_ubase_t offset, rt_uint32_t value)
 {
-    *((volatile rt_uint32_t *)(addr + (offset << UART_REG_SHIFT))) = value;
+    WRITE_REG_32(addr + ((offset) << UART_REG_SHIFT), value);
 
     if (offset == UART_LCR)
     {
@@ -142,7 +142,7 @@ rt_inline void dw8250_write32(rt_ubase_t addr, rt_ubase_t offset, rt_uint32_t va
             dw8250_write32(addr, UART_FCR, UART_FCR_EN_FIFO | UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT);
             dw8250_read32(addr, UART_RX);
 
-            *((volatile rt_uint32_t *)(addr + (offset << UART_REG_SHIFT))) = value;
+            WRITE_REG_32(addr + ((offset) << UART_REG_SHIFT), value);
         }
     }
 }
